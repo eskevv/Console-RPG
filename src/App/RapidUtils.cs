@@ -152,7 +152,6 @@ public static class ConsoleUtils
          }
       }
       
-      println(end);
       Console.SetCursorPosition(0, initial_top);
    }
 
