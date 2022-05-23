@@ -44,49 +44,41 @@ Monster the_uncoded_one() {
    return new Monster("THE UNCODED ONE", 15, new Unravling(), new List<ISpecial>());
 }
 
-void logging_tester() {
-   ConsoleLogger logger = new ConsoleLogger(50, 0);
-
-
-   
-}
-
-// var game = new NewGame(get_heroes(), get_monsters());
+var game = new NewGame(get_heroes(), get_monsters());
 Console.Clear();
-logging_tester();
-// game.run();
+game.run();
 println();
 
-public class ConsoleLogger
-{
-   private int _x_pos;
-   private int _y_pos;
-   private List<string?> _stored_messages;
+// public class ConsoleLogger
+// {
+//    private int _x_pos;
+//    private int _y_pos;
+//    private List<string?> _stored_messages;
 
-   public ConsoleLogger(int startX, int startY) {
-      _x_pos = startX;
-      _y_pos = startY;
-      _stored_messages = new List<string?>();
-   }
+//    public ConsoleLogger(int startX, int startY) {
+//       _x_pos = startX;
+//       _y_pos = startY;
+//       _stored_messages = new List<string?>();
+//    }
 
-   private void store_log(string? s) {
-      if (s != null) 
-         _stored_messages.Add(s);
-   }
+//    private void store_log(string? s) {
+//       if (s != null) 
+//          _stored_messages.Add(s);
+//    }
 
-   public void log(string? s) {
-      store_log(s);
+//    public void log(string? s) {
+//       store_log(s);
 
-      if (_stored_messages.Count > Console.BufferHeight) {
-         Console.BufferHeight += 1;
-      }
+//       if (_stored_messages.Count > Console.BufferHeight) {
+//          Console.BufferHeight += 1;
+//       }
 
-      int iterations = Math.Min(_stored_messages.Count, 20);
-      for (int a = 0; a < iterations; a++) {
-         Console.SetCursorPosition(_x_pos, _y_pos + a);
-         print(_stored_messages[_stored_messages.Count - (1 + a)]);
-         Console.SetWindowPosition(0, 0);
-      }
-   }
-}
+//       int iterations = Math.Min(_stored_messages.Count, 20);
+//       for (int a = 0; a < iterations; a++) {
+//          Console.SetCursorPosition(_x_pos, _y_pos + a);
+//          print(_stored_messages[_stored_messages.Count - (1 + a)]);
+//          Console.SetWindowPosition(0, 0);
+//       }
+//    }
+// }
 
