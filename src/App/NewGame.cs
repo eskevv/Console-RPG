@@ -22,7 +22,7 @@ public class NewGame
 
          if (_battle.Winners == "Heroes") {
             if (_battle_number == _monster_parties.Count - 1) {
-               println_colr("*** The heroes have won, and the Uncoded One has been defeated! ***", ConsoleColor.DarkGreen);
+               println_colr("*** The heroes have won! ***", ConsoleColor.DarkGreen);
                break;
             } else {
                _battle = new Battle(_hero_party, _monster_parties[++_battle_number], _battle_number);
@@ -31,7 +31,7 @@ public class NewGame
                Console.Clear();
             }
          } else if (_battle.Winners == "Monsters") {
-            println_colr("*** The heroes lost, and the Uncoded One's forces have prevailed... ***", ConsoleColor.DarkRed);
+            println_colr("*** The heroes lost, and the enemy has prevailed. ***", ConsoleColor.DarkRed);
             break;
          }
       }
