@@ -151,7 +151,6 @@ public static class ConsoleUtils
             Console.SetCursorPosition(start, Console.CursorTop + 1);
          }
       }
-      
       Console.SetCursorPosition(0, initial_top);
    }
 
