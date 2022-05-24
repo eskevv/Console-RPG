@@ -100,7 +100,7 @@ public class Battle
          return  _monster_controller.get_command(c, _monster_party.Select(x => (Character)x).ToList(), _hero_party.Select(x => (Character)x).ToList());
       }
 
-      return new DoNothing(c);
+      return new DoNothingAction(c);
    }
 
    private void calculate_winners() {

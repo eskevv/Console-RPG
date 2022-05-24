@@ -18,10 +18,6 @@ public class LogPrinter
    public void log(string? s) {
       store_log(s);
 
-      if (_stored_messages.Count > Console.BufferHeight) {
-         Console.BufferHeight += 1;
-      }
-
       int iterations = Math.Min(_stored_messages.Count, 20);
       for (int a = 0; a < iterations; a++) {
          Console.SetCursorPosition(_x_pos, _y_pos + a);

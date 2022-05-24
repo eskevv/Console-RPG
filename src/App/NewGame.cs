@@ -4,11 +4,9 @@ public class NewGame
    private List<List<Monster>> _monster_parties;
    private Battle _battle;
 
-
    private int _battle_number = 0;
-
    public static ConsoleColor DefaultColor { get; } = Console.ForegroundColor;
-   public static int TotalRounds { get; set; }
+   public static int TotalRounds { get; private set; }
 
    public NewGame(List<Hero> hero_party, List<List<Monster>> monsterparties) {
       _hero_party = hero_party;
@@ -26,12 +24,12 @@ public class NewGame
             if (_battle_number == _monster_parties.Count - 1) {
                println_colr("*** The heroes have won! ***", ConsoleColor.DarkGreen);
                break;
-            } else {
-               _battle = new Battle(_hero_party, _monster_parties[++_battle_number], _battle_number);
-               println_colr($"Proceeding to ROUND# {_battle_number + 1}...", ConsoleColor.DarkYellow);
-               Thread.Sleep(3800);
-               Console.Clear();
             }
+            _battle = new Battle(_hero_party, _monster_parties[++_battle_number], _battle_number);
+            println_colr($"Proceeding to ROUND# {_battle_number + 1}...", ConsoleColor.DarkYellow);
+            Thread.Sleep(3800);
+            Console.Clear();
+            
          } else if (_battle.Winners == "Monsters") {
             println_colr("*** The heroes lost, and the enemy has prevailed. ***", ConsoleColor.DarkRed);
             break;

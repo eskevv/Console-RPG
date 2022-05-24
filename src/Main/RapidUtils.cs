@@ -1,5 +1,4 @@
 namespace RapidUtils;
-
 using static RapidUtils.ParseUtils;
 
 public static class ConsoleUtils

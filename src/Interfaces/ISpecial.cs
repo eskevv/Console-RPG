@@ -1,7 +1,10 @@
 public interface ISpecial
 {
-   public string Name { get; init; }
-   public (int min, int max) Damage { get; init; }
-   public int SPCost { get; init; }
-   public int RechargeTime { get; set; }
+   string Name { get; init; }
+   (int min, int max) Damage { get; init; }
+   (int min, int max) Pierce { get; init; }
+   float Accuracy { get; init; }
+   int SPCost { get; init; }
+   int RechargeTime { get; init; }
+   DamageType Type { get; init; }
 }

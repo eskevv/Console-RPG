@@ -1,9 +1,9 @@
-public class DoNothing : IAction
+public class DoNothingAction : IAction
 {
    public Character Character { get; init; }
    public string Value { get; init; }
    
-   public DoNothing(Character c) {
+   public DoNothingAction(Character c) {
       Character = c;
       Value = "NOTHING";
    }

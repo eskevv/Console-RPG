@@ -12,7 +12,7 @@ public class AIController : IController
       Thread.Sleep(1100);
       return r.Next(0, 8) switch {
          < 6 => new AttackAction(c, get_target(enemies)),
-         _ => new DoNothing(c),
+         _ => new DoNothingAction(c),
       };
    }
 }

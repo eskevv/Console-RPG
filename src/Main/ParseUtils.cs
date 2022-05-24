@@ -2,12 +2,6 @@ namespace RapidUtils;
 
 public static class ParseUtils
 {
-   public static void test() {
-
-
-
-   }
-
    public static string[] substring_patterns(this string content, string subA, string subB, Func<char, bool> f) {
       var substrings = new List<string>();
       int[] indexes = pattern_indexes(content, subA, subB, f);

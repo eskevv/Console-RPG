@@ -1,5 +1,7 @@
 public interface IAttack
 {
-   public string Name { get; init; }
-   public (int min, int max) Damage { get; init; }
+   string Name { get; init; }
+   (int min, int max) Damage { get; init; }
+   float Accuracy { get; init; }
+   DamageType Type { get; init; }
 }

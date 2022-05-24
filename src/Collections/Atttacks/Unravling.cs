@@ -1,9 +1,14 @@
 public class Unravling : IAttack
 {
-   public string Name { get; init; } = "UNRAVLING";
+   public string Name { get; init; }
    public (int min, int max) Damage { get; init; }
+   public float Accuracy { get; init; }
+   public DamageType Type { get; init; }
 
    public Unravling() {
+      Name = "UNRAVLING";
       Damage = (0, 2);
+      Accuracy = 0.7f;
+      Type = DamageType.Decoding;
    }
 }

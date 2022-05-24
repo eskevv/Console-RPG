@@ -35,35 +35,42 @@ public class PlayerController : IController
       }
    }
 
+   private AttackAction? get_attacking_action(Character c, List<Character> enemies) {
+      Character? target = get_target(enemies);
+      if (target != null) {
+         return new AttackAction(c, target);
+      }
+      return null;
+   } 
+
+   private SpecialAction? get_special_action(Character c, List<Character> enemies) {
+      while (true) {
+         ISpecial? special = get_special_moves(c.Specials);
+         if (special != null) {
+            Character? new_target = get_target(enemies);
+            if (new_target != null) {
+               return new SpecialAction(c, new_target, special);
+            }
+         }
+         if (special == null) return null;
+      }
+   }
+
    public IAction get_command(Character c, List<Character> friendly, List<Character> enemies) {
       var actions_menu = new Menu(new string[] {"StandardAttack", "Special", "DoNothing"}, ConsoleColor.Blue, "*** { ACTIONS } ***");
       while (true) {
-         int item_num = actions_menu.collect_input();
-         switch (item_num) {
-            case 0:
-               Character? attack_target = get_target(enemies);
-               if (attack_target != null) {
-                  return new AttackAction(c, attack_target);
-               }
-               break;
-
-            case 1:
-               while (true) {
-                  ISpecial? special = get_special_moves(c.Specials);
-                  if (special != null) {
-                     Character? new_target = get_target(enemies);
-                     if (new_target != null) {
-                        return new SpecialMove(c, new_target, special);
-                     }
-                  } else {
-                     break;
-                  }
-
-               }
-               break;
-
-            case 2:
-               return new DoNothing(c);
+         int menu_item = actions_menu.collect_input();
+         switch (menu_item) {
+         case 0:
+            AttackAction? attack = get_attacking_action(c, enemies);
+            if (attack != null) return attack;
+            break;
+         case 1:
+            SpecialAction? special = get_special_action(c, enemies);
+            if (special != null) return special;
+            break;
+         case 2:
+            return new DoNothingAction(c);
          }
       }
    }
