@@ -84,7 +84,7 @@ public class Menu
          display_menu();
          display_help();
 
-         ConsoleKeyInfo key_pressed = get_key();
+         ConsoleKeyInfo key_pressed = read_key();
          if (key_pressed.Key == ConsoleKey.UpArrow) {
             set_arrow(-1);
          }

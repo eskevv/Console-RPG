@@ -1,8 +1,29 @@
 namespace RapidUtils;
 
+using static RapidUtils.ParseUtils;
+
 public static class ConsoleUtils
 {
    // console quick prints and input
+   public static void print_color(string s, params ConsoleColor[] colors) {
+      ConsoleColor current = Console.ForegroundColor;
+      string[] items = s.substring_patterns("%", "%", x => char.IsDigit(x));
+      int[] color_order = s.pattern_contents("%", "%", x => char.IsDigit(x));
+
+      items.in_each((i, x) => print_colr(i, colors[color_order[x]]));
+      Console.ForegroundColor = current;
+   }
+
+   public static void println_color(string s, params ConsoleColor[] colors) {
+      ConsoleColor current = Console.ForegroundColor;
+      string[] items = s.substring_patterns("%", "%", x => char.IsDigit(x));
+      int[] color_order = s.pattern_contents("%", "%", x => char.IsDigit(x));
+
+      items.in_each((i, x) => print_colr(i, colors[color_order[x]]));
+      Console.ForegroundColor = current;
+      Console.WriteLine();
+   }
+
    public static void print(object? s) {
       System.Console.Write(s);
    }
@@ -42,7 +63,7 @@ public static class ConsoleUtils
       return Console.ReadLine();
    }
 
-   public static ConsoleKeyInfo get_key() {
+   public static ConsoleKeyInfo read_key() {
       return Console.ReadKey(true);
    }
 
@@ -123,6 +144,7 @@ public static class ConsoleUtils
       Console.WriteLine();
    }
 
+   // clear console
    public static void clear_input(int lines = 1) {
       int initial_top = Console.CursorTop - lines;
       Console.SetCursorPosition(0, Console.CursorTop - lines);
@@ -163,9 +185,11 @@ public static class ConsoleUtils
       return args.Contains(obj);
    }
 
-   // parsing
-   public static int to_int(string? s) {
-      return Int32.TryParse(s, out int number) == false ? 0 : number;
+   public static void in_each<T>(this IEnumerable<T> ie, Action<T, int> action) {
+      int i = 0;
+      foreach (var e in ie) {
+         action(e, i++);
+      }
    }
 
    // math

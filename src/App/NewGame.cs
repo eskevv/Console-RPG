@@ -4,8 +4,10 @@ public class NewGame
    private List<List<Monster>> _monster_parties;
    private Battle _battle;
 
+
    private int _battle_number = 0;
 
+   public static ConsoleColor DefaultColor { get; } = Console.ForegroundColor;
    public static int TotalRounds { get; set; }
 
    public NewGame(List<Hero> hero_party, List<List<Monster>> monsterparties) {

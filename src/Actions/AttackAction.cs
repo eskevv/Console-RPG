@@ -27,14 +27,11 @@ public class AttackAction : IAction
    }
 
    protected void display_result(AttackData data) {
-      print_colr($"{Value} ", _value_color);
-      print($"dealt ");
-      print_colr($"{data.DamageDone}* ", ConsoleColor.Magenta);
-      println($"damage to {Target.Name}");
-      Thread.Sleep(700);
-      print_colr($"{Target.Name} ", _target_color);
-      print($"is now at ");
-      println_colr($"{Target.Health}/{Target.MaxHealth} HP", _target_color);
+      string a = $"%0%{Value} %1%dealt %0%{data.DamageDone}* %1%damage to %2%{Target.Name}";
+      println_color(a, _value_color, NewGame.DefaultColor, ConsoleColor.Magenta);
+
+      string b = $"%0%{Target.Name} %1%is now at %0%{Target.Health}/{Target.MaxHealth} HP";
+      println_color(b, _target_color, NewGame.DefaultColor);
    }
 
    public virtual void execute() {
