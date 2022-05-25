@@ -1,7 +1,14 @@
 # Console-RPG
-An RPG console game - focusing more on systems than narrative
+### An RPG console game - focusing more on systems than narrative 
+#Fight against a wave of Monsters with a party of heroes
 
-### Bugs
-- Menu selections are bugged in older terminals. 
-  - I used the newer Windows Terminal with PS while developing
-  - temporary fix: not clearing the entire console width, just enough to show the game
+### Combat is turn-based and includes damage modifications such as
+- Critical Damage
+- Evasion
+- Armor and Pierce
+- Different movesets
+
+### The Design:
+- Scroll logging with colors for ease of reading
+- Scoreboard updates every round
+- Menu system with arrows
