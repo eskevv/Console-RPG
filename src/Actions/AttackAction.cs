@@ -38,10 +38,7 @@ public class AttackAction : IAction
          string crit = $"%0%A CRITICAL HIT!";
          println_color(crit, _crit_color);
       }
-      string b = $"%0%{Value} %1%dealt %2%{data.DamageDone}* %1%damage to %3%{_target.Name}";
-      println_color(b, _value_color, NewGame.DefaultColor, ConsoleColor.Magenta, _target_color);
-      Thread.Sleep(900);
-
+      
       if (data.DamageBlocked == 0 && _target.Armor > 0 && data.PierceDamage > 0) {
          string pierced = $"%0%{Value} %2%DESTROYED %3%{_target.Name}'s %1%armor";
          println_color(pierced, _value_color, NewGame.DefaultColor, ConsoleColor.Magenta, _target_color);
@@ -51,6 +48,10 @@ public class AttackAction : IAction
          println_color(pierced, _value_color, NewGame.DefaultColor, ConsoleColor.Magenta, _target_color);
          Thread.Sleep(600);
       } 
+      string b = $"%0%{Value} %1%dealt %2%{data.DamageDone}* %1%damage to %3%{_target.Name}";
+      println_color(b, _value_color, NewGame.DefaultColor, ConsoleColor.Magenta, _target_color);
+      Thread.Sleep(900);
+
 
       string c = $"%0%{_target.Name} %1%is now at %0%{_target.Health}/{_target.MaxHealth} HP";
       println_color(c, _target_color, NewGame.DefaultColor);
