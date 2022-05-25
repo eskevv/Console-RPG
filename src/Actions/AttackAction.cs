@@ -23,12 +23,17 @@ public class AttackAction : IAction
    protected void display_result(AttackData data) {
       string a = $"{Character.Name} used %0%{Value} %1%on {_target.Name}...";
       println_color(a, _value_color, NewGame.DefaultColor);
+      if (_atk_data.Dodged) {
+         string dodged = $"%0%{Value} missed the target...";
+         println_color(dodged, ConsoleColor.Red);
+      }
       Thread.Sleep(1500);
 
       string b = $"%0%{Value} %1%dealt %0%{data.DamageDone}* %1%damage to %2%{_target.Name}";
       if (_atk_data.CriticalHit) {
          string crit = $"%0%A CRITICAL HIT!";
          println_color(crit, ConsoleColor.Magenta);
+         Thread.Sleep(900);
       }
       println_color(b, _value_color, NewGame.DefaultColor, ConsoleColor.Magenta);
 
