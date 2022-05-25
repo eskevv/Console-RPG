@@ -9,12 +9,10 @@ public abstract class DamageCalculator
 
    protected readonly Character _source;
    protected readonly Character _target; 
-   protected readonly IAttack _ability; 
 
-   public DamageCalculator(Character source, Character target, IAttack ability) {
+   public DamageCalculator(Character source, Character target) {
       _source = source;
       _target = target;
-      _ability = ability;
    }
 
    public abstract AttackData get_data();

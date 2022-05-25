@@ -2,7 +2,7 @@ public class SpecialAttackCalculator : DamageCalculator
 {
    private readonly ISpecial _special;
 
-   public SpecialAttackCalculator(Character source, Character target, ISpecial special) : base(source, target, special) {
+   public SpecialAttackCalculator(Character source, Character target, ISpecial special) : base(source, target) {
       _special = special;
    }
 
