@@ -42,7 +42,7 @@ public class AttackAction : IAction
       println_color(b, _value_color, NewGame.DefaultColor, ConsoleColor.Magenta, _target_color);
       Thread.Sleep(900);
 
-      if (data.DamageBlocked == 0 && _target.Armor > 0) {
+      if (data.DamageBlocked == 0 && _target.Armor > 0 && data.PierceDamage > 0) {
          string pierced = $"%0%{Value} %2%DESTROYED %3%{_target.Name}'s %1%armor";
          println_color(pierced, _value_color, NewGame.DefaultColor, ConsoleColor.Magenta, _target_color);
          Thread.Sleep(600);
