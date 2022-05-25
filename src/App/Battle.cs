@@ -36,7 +36,7 @@ public class Battle
          if (Winners != "None") {
             break;
          }
-         println_separator(".", _scoreboard.Width, "MONSTERS TURN", ConsoleColor.DarkRed);
+         println_separator(".", _scoreboard.Width, "MONSTERS TURN", ConsoleColor.DarkRed, ConsoleColor.DarkGray);
          println();
 
          loop_party(_monster_party);
