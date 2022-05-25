@@ -5,21 +5,21 @@ public class AttackAction : IAction
    public string Value { get ; init; }
 
    // class properties
-   protected readonly Character _target;
+   private readonly Character _target;
+   private readonly IAttack _attack;
    private readonly ConsoleColor _target_color;
    private readonly ConsoleColor _value_color;
    private readonly ConsoleColor _crit_color;
-   protected AttackData _atk_data;
 
-   public AttackAction(Character c, Character t) {
+   public AttackAction(Character c, Character t, IAttack attack) {
       Character= c;
+      Value = $"{attack.Name}";
+
       _target = t;
+      _attack = attack;
       _target_color = t is Hero ? ConsoleColor.DarkBlue : ConsoleColor.DarkRed;
       _crit_color = c is Hero ? ConsoleColor.Magenta : ConsoleColor.DarkRed;
       _value_color = ConsoleColor.Yellow;
-      _atk_data = new AttackCalculator(c, c.Attack, t).get_data();
-
-      Value = $"{c.Attack.Name}";
    }
 
    protected void display_result(AttackData data) {
@@ -27,12 +27,12 @@ public class AttackAction : IAction
       println_color(a, _value_color, NewGame.DefaultColor);
       Thread.Sleep(1100);
 
-      if (_atk_data.Dodged) {
+      if (data.Dodged) {
          string dodged = $"%0%{Value} missed the target...";
          println_color(dodged, ConsoleColor.Red);
       }
 
-      if (_atk_data.CriticalHit) {
+      if (data.CriticalHit) {
          string crit = $"%0%A CRITICAL HIT!";
          println_color(crit, _crit_color);
       }
@@ -43,10 +43,10 @@ public class AttackAction : IAction
       string c = $"%0%{_target.Name} %1%is now at %0%{_target.Health}/{_target.MaxHealth} HP";
       println_color(c, _target_color, NewGame.DefaultColor);
       Thread.Sleep(1400);
-
    }
 
    public virtual void execute() {
+      var _atk_data = new AttackCalculator(Character, _target, _attack).get_data();
       _target.Health = Math.Max(_target.Health - _atk_data.DamageDone, 0);
       display_result(_atk_data);
    }
