@@ -5,7 +5,7 @@ public abstract class Character
    public int MaxHealth { get; set; }
    public IAttack Attack { get; set; }
    public List<ISpecial> Specials { get; set; }
-   public int Armor { get; set; } = 3;
+   public int Armor { get; set; } = 10;
    public float Evasion { get; set; } = 0.25f;
    public float CritChance { get; set; } = 0.5f;
    public float CritMultiplier { get; set; } = 2.0f;

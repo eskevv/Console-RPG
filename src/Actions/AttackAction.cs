@@ -42,6 +42,16 @@ public class AttackAction : IAction
       println_color(b, _value_color, NewGame.DefaultColor, ConsoleColor.Magenta, _target_color);
       Thread.Sleep(900);
 
+      if (data.DamageBlocked == 0 && _target.Armor > 0) {
+         string pierced = $"%0%{Value} %2%DESTROYED %3%{_target.Name}'s %1%armor";
+         println_color(pierced, _value_color, NewGame.DefaultColor, ConsoleColor.Magenta, _target_color);
+         Thread.Sleep(600);
+      } else if (data.PierceDamage > 0 && _target.Armor > 0 ) {
+         string pierced = $"%0%{Value} %1%pierced through %2%{_target.Armor - data.DamageBlocked}* of %3%{_target.Name}'s %1%armor";
+         println_color(pierced, _value_color, NewGame.DefaultColor, ConsoleColor.Magenta, _target_color);
+         Thread.Sleep(600);
+      } 
+
       string c = $"%0%{_target.Name} %1%is now at %0%{_target.Health}/{_target.MaxHealth} HP";
       println_color(c, _target_color, NewGame.DefaultColor);
       Thread.Sleep(1400);
