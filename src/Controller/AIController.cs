@@ -11,7 +11,7 @@ public class AIController : IController
    public IAction get_command(Character c, List<Character> friendly, List<Character> enemies) {
       Thread.Sleep(1100);
       return r.Next(0, 8) switch {
-         < 6 => new AttackAction(c, get_target(enemies)),
+         < 6 => new AttackAction(c, get_target(enemies), c.Attack),
          _ => new DoNothingAction(c),
       };
    }

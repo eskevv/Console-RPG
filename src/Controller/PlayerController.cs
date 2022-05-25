@@ -30,7 +30,7 @@ public class PlayerController : IController
       Character? target = targets_menu(enemies);
       if (target == null) return null;
       
-      return new AttackAction(c, target);
+      return new AttackAction(c, target, c.Attack);
    }
 
    private SpecialAction? get_special_action(Character c, List<Character> enemies) {
