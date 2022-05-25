@@ -20,7 +20,7 @@ public class Battle
       _battle_number = battleNumber;
       _scoreboard = new Scoreboard(get_score_data(), 80, battleNumber + 1, NewGame.TotalRounds);
 
-      _hero_controller = new PlayerController();
+      _hero_controller = new AIController();
       _monster_controller = new AIController();
 
       _friendly_color = ConsoleColor.DarkBlue;
@@ -68,7 +68,7 @@ public class Battle
          
          display_turn(member);
          get_action(member).execute();
-         
+
          List<Character> dead_members = all_deaths();
          announce_deaths(dead_members);
          remove_dead_monsters(dead_members);
@@ -85,11 +85,8 @@ public class Battle
       ConsoleColor color = c is Hero ? _friendly_color : _enemy_color;
       string symbol_a = c is Hero ? ">>> " : "";
       string symbol_b = c is Hero ? "<<< " : "";
-      print_colr($"{symbol_a}", ConsoleColor.DarkGreen);
-      print($"It is ");
-      print_colr($"{c.Name}'s ", color );
-      print($"turn ");
-      println_colr($"{symbol_b}", ConsoleColor.DarkGreen);
+      string a = $"%1%{symbol_a}%0%It is %2%{c.Name}'s %0%turn %1%{symbol_b}";
+      println_color(a, NewGame.DefaultColor, ConsoleColor.DarkGreen, color); 
    }  
 
    private IAction get_action(Character c) {

@@ -10,6 +10,7 @@ public class AttackAction : IAction
    private readonly ConsoleColor _target_color;
    private readonly ConsoleColor _value_color;
    private readonly ConsoleColor _crit_color;
+   private readonly LogPrinter _printer;
 
    public AttackAction(Character c, Character t, IAttack attack) {
       Character= c;
@@ -20,6 +21,7 @@ public class AttackAction : IAction
       _target_color = t is Hero ? ConsoleColor.DarkBlue : ConsoleColor.DarkRed;
       _crit_color = c is Hero ? ConsoleColor.Magenta : ConsoleColor.DarkRed;
       _value_color = ConsoleColor.Yellow;
+      _printer = new LogPrinter(90, 0);
    }
 
    protected void display_result(AttackData data) {

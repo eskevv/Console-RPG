@@ -4,6 +4,7 @@ public class Scoreboard
    private List<ScoreData> _monsters_scores;
 
    public int Width { get; init; }
+   
    private int _round;
    private int _total_rounds;
    private ConsoleColor _decorator_color;

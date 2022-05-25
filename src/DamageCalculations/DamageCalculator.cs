@@ -8,7 +8,7 @@ public abstract class DamageCalculator
    protected int _damageDone;
 
    protected readonly Character _source;
-   protected readonly Character _target; 
+   protected readonly Character _target;
 
    public DamageCalculator(Character source, Character target) {
       _source = source;

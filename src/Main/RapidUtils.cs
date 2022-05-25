@@ -173,7 +173,7 @@ public static class ConsoleUtils
    public static void clear_input(int start, int end, int lines = 1) {
       int initial_top = Console.CursorTop - lines;
       Console.SetCursorPosition(start, Console.CursorTop - lines);
-      end = end == -1 ? Console.WindowWidth - 20: end + 1;
+      end = end == -1 ? Console.WindowWidth - 10: end + 1;
       for (int l = 0; l < lines; l++) {
          for (int i = 0; i < end; i++)  {
             Console.Write(" ");
