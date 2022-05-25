@@ -30,10 +30,14 @@ public class Battle
    // methods
    public void start() {
       while (true) {
+         _scoreboard.update_scores(get_score_data(), _battle_number + 1);
+         _scoreboard.print_board();
          loop_party(_hero_party);
          if (Winners != "None") {
             break;
          }
+         println_separator(".", _scoreboard.Width, "ENEMY TURN", ConsoleColor.DarkRed);
+         println();
 
          loop_party(_monster_party);
          if (Winners != "None") {
@@ -60,13 +64,9 @@ public class Battle
    // Game Flow
    private void loop_party<T>(List<T> party) where T : Character {
       foreach (var member in party) {
-         if (member is Hero) {
-            _scoreboard.update_scores(get_score_data(), _battle_number + 1);
-            _scoreboard.print_board();
-         }
-
+         if (member.Health == 0) continue;
+         
          display_turn(member);
-
          get_action(member).execute();
          
          List<Character> dead_members = all_deaths();
@@ -133,7 +133,7 @@ public class Battle
       }
 
       if (characters.Count(x => x is Monster) > 0) {
-         println($"---{_monster_party.Count - 1} monster(s) remain---");
+         println_colr($"---{_monster_party.Count - 1} monster(s) remain---", ConsoleColor.DarkYellow);
       }
    }
 

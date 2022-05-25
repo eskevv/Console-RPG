@@ -12,6 +12,7 @@ public static class Application
       main_specials.Add(new OmniSlash());
       
       _heroparty.Add(new Hero("LEE", 20, new Kick(), main_specials));
+      _heroparty.Add(new Hero("CLOUD", 15, new Punch(), main_specials));
 
       return _heroparty;
    }
