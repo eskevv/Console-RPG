@@ -15,7 +15,7 @@ public class Scoreboard
       Width = width;
       _round = round;
       _total_rounds = totalRounds;
-      _decorator_color = ConsoleColor.DarkYellow;
+      _decorator_color = ConsoleColor.DarkGreen;
       _symbol_color = ConsoleColor.DarkGray;
    }
 

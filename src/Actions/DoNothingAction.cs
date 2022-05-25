@@ -11,5 +11,6 @@ public class DoNothingAction : IAction
    public void execute() {
       print($"{Character.Name} did ");
       println_colr($"{Value}", ConsoleColor.DarkGray);
+      Thread.Sleep(500);
    }
 }

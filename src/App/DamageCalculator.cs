@@ -44,7 +44,7 @@ public class SpecialAttackCalculator : IDamageCalculator
          return true;
       }
       float chance = accuracy - evasion / (accuracy / evasion);
-      println_colr($"LOG | CHANCE TO HIT: {chance}", ConsoleColor.DarkGreen);
+      // println_colr($"LOG | CHANCE TO HIT: {chance}", ConsoleColor.DarkGreen);
       return new Random().Next(0, 100) <= chance - 1;
    }
 
@@ -56,7 +56,7 @@ public class SpecialAttackCalculator : IDamageCalculator
       int target_defence = Target.Armor > 0 ? Target.Armor - (int)((float)(PierceDamage / Target.Armor) * PierceDamage) : 0;
 
       DamageBlocked = Math.Min(buffed_damage, target_defence);
-      println_colr($"LOG | BuffedDamage: {buffed_damage}, Defence: {target_defence}, Pierce: {PierceDamage}, DamageBlocked: {DamageBlocked}\n", ConsoleColor.DarkGreen);
+      // println_colr($"LOG | BuffedDamage: {buffed_damage}, Defence: {target_defence}, Pierce: {PierceDamage}, DamageBlocked: {DamageBlocked}\n", ConsoleColor.DarkGreen);
 
       return Math.Max(buffed_damage - target_defence, 0);
    }

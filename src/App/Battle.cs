@@ -36,7 +36,7 @@ public class Battle
          if (Winners != "None") {
             break;
          }
-         println_separator(".", _scoreboard.Width, "ENEMY TURN", ConsoleColor.DarkRed);
+         println_separator(".", _scoreboard.Width, "MONSTERS TURN", ConsoleColor.DarkRed);
          println();
 
          loop_party(_monster_party);
@@ -129,11 +129,11 @@ public class Battle
 
    private void announce_deaths(List<Character> characters) {
       foreach (var c in characters) {
-         println_colr($"{c.Name} has been defeated!", ConsoleColor.DarkYellow);
+         println_colr($"{c.Name} has been defeated!", ConsoleColor.DarkGreen);
       }
 
       if (characters.Count(x => x is Monster) > 0) {
-         println_colr($"---{_monster_party.Count - 1} monster(s) remain---", ConsoleColor.DarkYellow);
+         println_colr($"---{_monster_party.Count - 1} monster(s) remain---", ConsoleColor.DarkGreen);
       }
    }
 

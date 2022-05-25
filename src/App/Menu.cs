@@ -20,7 +20,8 @@ public class Menu
          "[ UP    ] = SCROLL UP",
          "[ DOWN  ] = SCROLL DOWN",
          "[ ENTER ] = SELECT ITEM",
-         "[ SPACE ] = TOGGLE HELP"
+         "[ SPACE ] = TOGGLE HELP",
+         "[ ESC   ] = GO BACK"
       }; 
                                           
       _help_items = helpItems == null ? _default_help : helpItems;

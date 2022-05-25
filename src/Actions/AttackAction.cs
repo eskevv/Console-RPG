@@ -16,7 +16,7 @@ public class AttackAction : IAction
       _target = t;
       _target_color = t is Hero ? ConsoleColor.DarkBlue : ConsoleColor.DarkRed;
       _crit_color = c is Hero ? ConsoleColor.Magenta : ConsoleColor.DarkRed;
-      _value_color = ConsoleColor.DarkGray;
+      _value_color = ConsoleColor.Yellow;
       _atk_data = new AttackCalculator(c, c.Attack, t).get_data();
 
       Value = $"{c.Attack.Name}";
@@ -36,8 +36,8 @@ public class AttackAction : IAction
          string crit = $"%0%A CRITICAL HIT!";
          println_color(crit, _crit_color);
       }
-      string b = $"%0%{Value} %1%dealt %0%{data.DamageDone}* %1%damage to %2%{_target.Name}";
-      println_color(b, _value_color, NewGame.DefaultColor, ConsoleColor.Magenta);
+      string b = $"%0%{Value} %1%dealt %2%{data.DamageDone}* %1%damage to %3%{_target.Name}";
+      println_color(b, _value_color, NewGame.DefaultColor, ConsoleColor.Magenta, _target_color);
       Thread.Sleep(900);
 
       string c = $"%0%{_target.Name} %1%is now at %0%{_target.Health}/{_target.MaxHealth} HP";
