@@ -13,10 +13,8 @@ public class SpecialAttackCalculator : DamageCalculator
       _pierceDamage = get_pierce();
 
       int amped = get_amped_damage();
-      _damageBlocked = Math.Min(amped, _target.Armor);
+      _damageBlocked = Math.Min(amped + _pierceDamage, _target.Armor);
       _damageDone = Math.Max(amped - _damageBlocked, 0);
-
-      println($"PIERCE : {_pierceDamage}, BLOCKED : {_damageBlocked}");
 
       return new AttackData(_damageDone, _dodged, _criticalHit, _pierceDamage, _damageBlocked);
    }
@@ -50,7 +48,6 @@ public class SpecialAttackCalculator : DamageCalculator
    }
 
    protected override int get_amped_damage() {
-      int core_damage = _criticalHit ? (int)(_damage * _source.CritMultiplier) : _damage;
-      return core_damage + _pierceDamage;
+      return _criticalHit ? (int)(_damage * _source.CritMultiplier) : _damage;
    }
 }

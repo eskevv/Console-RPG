@@ -55,7 +55,7 @@ public class Battle
       } 
 
       if (controller is AIController) {
-         println_separator(".", _scoreboard.Width, "MONSTERS TURN", ConsoleColor.DarkRed, ConsoleColor.DarkGray);
+         println_separator(".", _scoreboard.Width, "MONSTERS TURN", ConsoleColor.DarkGray, ConsoleColor.DarkRed);
          println();
       }
    }
