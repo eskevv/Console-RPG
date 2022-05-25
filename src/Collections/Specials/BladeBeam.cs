@@ -1,4 +1,4 @@
-public class OmniSlash : ISpecial
+public class BladeBeam : ISpecial
 {
    public string Name { get; init; }
    public (int min, int max) Damage { get; init; }
@@ -8,12 +8,12 @@ public class OmniSlash : ISpecial
    public int RechargeTime { get; init; }
    public int SPCost { get; init; }
 
-   public OmniSlash() {
-      Name = "OMNI-SLASH";
-      Damage = (5, 6);
-      Accuracy = 0.9f;
+   public BladeBeam() {
+      Name = "BLADE-BEAM";
+      Damage = (5, 9);
+      Accuracy = 0.8f;
       Type = DamageType.Fire;
-      Pierce = (1, 2);
+      Pierce = (2, 3);
       RechargeTime = 2;
       SPCost = 2;
    }

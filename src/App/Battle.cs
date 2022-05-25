@@ -1,9 +1,10 @@
 public class Battle
 {
+   public string Winners { get; private set; }
+
    private List<Hero> _hero_party;
    private List<Monster> _monster_party;
 
-   public string Winners { get; private set; }
    private readonly Scoreboard _scoreboard;
    private readonly int _battle_number;
 
@@ -14,13 +15,15 @@ public class Battle
    private readonly ConsoleColor _enemy_color;
 
    public Battle(List<Hero> heroes, List<Monster> monsterparty, int battleNumber) {
+      Winners = "None";
+
       _hero_party = heroes;
       _monster_party = monsterparty;
-      Winners = "None";
-      _battle_number = battleNumber;
+      
       _scoreboard = new Scoreboard(get_score_data(), 80, battleNumber + 1, NewGame.TotalRounds);
+      _battle_number = battleNumber;
 
-      _hero_controller = new AIController();
+      _hero_controller = new PlayerController();
       _monster_controller = new AIController();
 
       _friendly_color = ConsoleColor.DarkBlue;
@@ -30,19 +33,30 @@ public class Battle
    // methods
    public void start() {
       while (true) {
-         _scoreboard.update_scores(get_score_data(), _battle_number + 1);
-         _scoreboard.print_board();
+         print_heading(_hero_controller);
          loop_party(_hero_party);
          if (Winners != "None") {
             break;
          }
-         println_separator(".", _scoreboard.Width, "MONSTERS TURN", ConsoleColor.DarkRed, ConsoleColor.DarkGray);
-         println();
-
+         
+         print_heading(_monster_controller);
          loop_party(_monster_party);
          if (Winners != "None") {
             break;
          }
+      }
+   }
+
+   private void print_heading<T>(T controller) where T : IController {
+      if (controller is PlayerController) {
+         _scoreboard.update_scores(get_score_data(), _battle_number + 1);
+         _scoreboard.print_board();
+         return;
+      } 
+
+      if (controller is AIController) {
+         println_separator(".", _scoreboard.Width, "MONSTERS TURN", ConsoleColor.DarkRed, ConsoleColor.DarkGray);
+         println();
       }
    }
 
