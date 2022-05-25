@@ -6,9 +6,9 @@ public class Kick : IAttack
    public DamageType Type { get; init; }
 
    public Kick() {
-      Name = "Kick";
-      Damage = (1, 2);
-      Accuracy = 0.6f;
+      Name = "KICK";
+      Damage = (1, 3);
+      Accuracy = 0.95f;
       Type = DamageType.Physical;
    }
 }

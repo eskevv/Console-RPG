@@ -10,8 +10,8 @@ public class OmniSlash : ISpecial
 
    public OmniSlash() {
       Name = "OMNI-SLASH";
-      Damage = (4, 5);
-      Accuracy = 0.5f;
+      Damage = (5, 6);
+      Accuracy = 0.75f;
       Type = DamageType.Fire;
       Pierce = (1, 2);
       RechargeTime = 2;

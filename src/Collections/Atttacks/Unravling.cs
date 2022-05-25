@@ -7,8 +7,8 @@ public class Unravling : IAttack
 
    public Unravling() {
       Name = "UNRAVLING";
-      Damage = (0, 2);
-      Accuracy = 0.7f;
+      Damage = (2, 3);
+      Accuracy = 0.8f;
       Type = DamageType.Decoding;
    }
 }

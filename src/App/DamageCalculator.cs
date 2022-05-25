@@ -39,30 +39,32 @@ public class SpecialAttackCalculator : IDamageCalculator
 
       if (evasion > accuracy) {
          for (int x  = 0; x < 2; x++) {
-            if (new Random().Next(0, 100) <= accuracy - 1) return false;
+            if (new Random().Next(0, 100) >= accuracy - 1) return false;
          }
          return true;
       }
-
       float chance = accuracy - evasion / (accuracy / evasion);
-      return new Random().Next(0, 100) >= chance - 1;
+      println_colr($"LOG CHANCE TO HIT: {chance}", ConsoleColor.DarkGreen);
+      return new Random().Next(0, 100) <= chance - 1;
    }
 
    private int get_total_damage() {
-      int buffed_damage =  CriticalHit ? Damage * Source.CritMultiplier : Damage;
+      int buffed_damage =  CriticalHit ? (int)(Damage * Source.CritMultiplier) : Damage;
       int pierce_roll = new Random().Next(_special.Pierce.min, _special.Pierce.max + 1);
 
-      PierceDamage = CriticalHit ? pierce_roll * Source.CritMultiplier : pierce_roll;
-      int target_defence = Target.Armor - (int)((float)(PierceDamage / Target.Armor) * PierceDamage);
-      DamageBlocked = Math.Min(buffed_damage, target_defence);
+      PierceDamage = CriticalHit ? (int)(pierce_roll * Source.CritMultiplier) : pierce_roll;
+      int target_defence = Target.Armor > 0 ? Target.Armor - (int)((float)(PierceDamage / Target.Armor) * PierceDamage) : 0;
 
-      return target_defence - buffed_damage;
+      DamageBlocked = Math.Min(buffed_damage, target_defence);
+      println_colr($"BuffedDamage: {buffed_damage}, Defence: {target_defence}, Pierce: {PierceDamage}, DamageBlocked: {DamageBlocked} ", ConsoleColor.DarkGreen);
+
+      return Math.Max(buffed_damage - target_defence, 0);
    }
 
    public AttackData get_data() {
       Damage = new Random().Next(_special.Damage.min, _special.Damage.max + 1);
-      if (Dodged = !calculate_hit_landed()) return new AttackData(this);
-      CriticalHit = new Random().Next(0, 100) >= Source.CritChance * 100 - 1;
+      if (!calculate_hit_landed()) return new AttackData(this);
+      CriticalHit = new Random().Next(0, 100) <= Source.CritChance * 100 - 1;
 
       DamageDone = get_total_damage();
 
@@ -96,21 +98,21 @@ public class AttackCalculator : IDamageCalculator
 
       if (evasion > accuracy) {
          for (int x  = 0; x < 2; x++) {
-            if (new Random().Next(0, 100) <= accuracy - 1) return false;
+            if (new Random().Next(0, 100) >= accuracy - 1) return false;
          }
          return true;
       }
 
       float chance = accuracy - evasion / (accuracy / evasion);
-      return new Random().Next(0, 100) >= chance - 1;
+      return new Random().Next(0, 100) <= chance - 1;
    }
 
    public AttackData get_data() {
       Damage = new Random().Next(_attack.Damage.min, _attack.Damage.max + 1);
       if (!calculate_hit_landed()) return new AttackData(this);
 
-      CriticalHit = new Random().Next(0, 100) >= Source.CritChance * 100 - 1;
-      int buffed_damage =  CriticalHit ? Damage * Source.CritMultiplier : Damage;
+      CriticalHit = new Random().Next(0, 100) <= Source.CritChance * 100 - 1;
+      int buffed_damage =  CriticalHit ? (int)(Damage * Source.CritMultiplier) : Damage;
       
       DamageBlocked = Math.Min(buffed_damage, Target.Armor);
       

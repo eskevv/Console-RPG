@@ -29,7 +29,7 @@ public static class ParseUtils
       return -1;
    }
 
-   public static int[] pattern_indexes(string s, string subA, string subB, Func<char, bool> f) {
+   public static int[] pattern_indexes(this string s, string subA, string subB, Func<char, bool> f) {
       var indexes = new List<int>();
 
       int startIndex = s.IndexOf(subA);

@@ -22,7 +22,6 @@ public class LogPrinter
       for (int a = 0; a < iterations; a++) {
          Console.SetCursorPosition(_x_pos, _y_pos + a);
          print(_stored_messages[_stored_messages.Count - (1 + a)]);
-         Console.SetWindowPosition(0, 0);
       }
    }
 }

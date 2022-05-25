@@ -8,6 +8,11 @@ public static class ConsoleUtils
       ConsoleColor current = Console.ForegroundColor;
       string[] items = s.substring_patterns("%", "%", x => char.IsDigit(x));
       int[] color_order = s.pattern_contents("%", "%", x => char.IsDigit(x));
+      int[] indexes = s.pattern_indexes("%", "%", x => char.IsDigit(x));
+
+      if (!indexes.Contains(0)) {
+         print(s.Substring(0, indexes[0]));
+      }
 
       items.in_each((i, x) => print_colr(i, colors[color_order[x]]));
       Console.ForegroundColor = current;
@@ -17,6 +22,11 @@ public static class ConsoleUtils
       ConsoleColor current = Console.ForegroundColor;
       string[] items = s.substring_patterns("%", "%", x => char.IsDigit(x));
       int[] color_order = s.pattern_contents("%", "%", x => char.IsDigit(x));
+      int[] indexes = s.pattern_indexes("%", "%", x => char.IsDigit(x));
+
+      if (!indexes.Contains(0)) {
+         print(s.Substring(0, indexes[0]));
+      }
 
       items.in_each((i, x) => print_colr(i, colors[color_order[x]]));
       Console.ForegroundColor = current;

@@ -7,7 +7,7 @@ public class BoneCrunch : IAttack
 
    public BoneCrunch() {
       Name = "BONE CRUNCH";
-      Damage = (0, 1);
+      Damage = (1, 2);
       Accuracy = 0.9f;
       Type = DamageType.Physical;
    }

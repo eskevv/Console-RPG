@@ -5,6 +5,10 @@ public class SpecialAction : AttackAction
    public SpecialAction(Character c, Character t, ISpecial special) : base(c, t) {
       Special = special;
       Value = special.Name;
-      _atk_data = new SpecialAttackCalculator(c, special, t).get_data();
     }
+
+    public override void execute() {
+       _atk_data = new SpecialAttackCalculator(Character, Special, _target).get_data();
+      base.execute();
+   }
 }
