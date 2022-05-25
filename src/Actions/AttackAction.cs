@@ -5,7 +5,7 @@ public class AttackAction : IAction
    public string Value { get ; init; }
 
    // class properties
-   private readonly Character _target;
+   protected readonly Character _target;
    private readonly IAttack _attack;
    private readonly ConsoleColor _target_color;
    private readonly ConsoleColor _value_color;
@@ -48,7 +48,7 @@ public class AttackAction : IAction
    }
 
    public virtual void execute() {
-      var _atk_data = new AttackCalculator(Character, _target, _attack).get_data();
+      var _atk_data = new StandardAttackCalculator(Character, _target, _attack).get_data();
       _target.Health = Math.Max(_target.Health - _atk_data.DamageDone, 0);
       display_result(_atk_data);
    }

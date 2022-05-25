@@ -1,8 +1,8 @@
-public class AttackCalculator : DamageCalculator
+public class StandardAttackCalculator : DamageCalculator
 {
    private readonly IAttack _attack;
 
-   public AttackCalculator(Character source, Character target, IAttack attack) : base(source, target) {
+   public StandardAttackCalculator(Character source, Character target, IAttack attack) : base(source, target) {
       _attack = attack;
    }
 

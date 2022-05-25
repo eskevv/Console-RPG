@@ -16,6 +16,8 @@ public class SpecialAttackCalculator : DamageCalculator
       _damageBlocked = Math.Min(amped, _target.Armor);
       _damageDone = Math.Max(amped - _damageBlocked, 0);
 
+      println($"PIERCE : {_pierceDamage}, BLOCKED : {_damageBlocked}");
+
       return new AttackData(_damageDone, _dodged, _criticalHit, _pierceDamage, _damageBlocked);
    }
 

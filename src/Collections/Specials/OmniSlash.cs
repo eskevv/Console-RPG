@@ -13,7 +13,7 @@ public class OmniSlash : ISpecial
       Damage = (5, 6);
       Accuracy = 0.9f;
       Type = DamageType.Fire;
-      Pierce = (1, 2);
+      Pierce = (50, 70);
       RechargeTime = 2;
       SPCost = 2;
    }

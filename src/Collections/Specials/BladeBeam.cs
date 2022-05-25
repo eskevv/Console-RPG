@@ -13,7 +13,7 @@ public class BladeBeam : ISpecial
       Damage = (5, 9);
       Accuracy = 0.8f;
       Type = DamageType.Fire;
-      Pierce = (2, 3);
+      Pierce = (6, 7);
       RechargeTime = 2;
       SPCost = 2;
    }
