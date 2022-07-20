@@ -2,7 +2,7 @@
 ### An RPG console game - focusing more on systems than narrative 
 ##### Fight against a wave of Monsters with a party of heroes
 
-#### Combat is turn-based and includes damage modifications like:
+#### The combat system is turn-based and includes mods like:
 - Critical Damage
 - Evasion
 - Armor and Pierce
